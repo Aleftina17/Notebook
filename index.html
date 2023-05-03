@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notebook</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="./js/main.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">Web-Notes App</h1>
+    </header>
+
+    <div class="container">
+      <div class="sidebar">
+        <h2 class="sidebar__title">Your Notes</h2>
+        <div class="sidebar__notes" id="notes"></div>
+      </div>
+
+      <form class="form">
+        <input
+          class="form__title"
+          type="text"
+          id="note-title"
+          maxlength="40"
+          placeholder="Note title"
+        />
+        <textarea
+          class="form__text"
+          id="note-text"
+          placeholder="Note text"
+        ></textarea>
+        <input class="form__img" type="file" id="note-image" accept="image/*" />
+
+        <div class="form__btns">
+          <label for="note-image" class="input__file-btn">
+            <!-- <span
+              class="input__file-indicator hidden"
+              id="file-indicator"
+            ></span> -->
+            <img
+              class="input__file-icon"
+              src="./img/select-file.svg"
+              alt=""
+              width="25"
+            />
+            <span class="input__file-button-text">Select image</span>
+            <button class="delete-btn hidden" aria-label="Delete image">
+              <span class="delete-icon"></span>
+            </button>
+          </label>
+          <button class="form__btn" id="add-btn">Add Note</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
