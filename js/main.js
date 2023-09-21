@@ -79,20 +79,20 @@ function showNotes() {
         }</p>
         </div>
         <div class="note__body">
-        <p class="note__text">${text}</p>
-        ${image ? `<img class="note__img" src="${image}" alt="" />` : ""}
-        <p class="note__date">${date}</p>
+          <p class="note__text">${text}</p>
+          ${image ? `<img class="note__img" src="${image}" alt="" />` : ""}
+          <p class="note__date">${date}</p>
+          </div>
         <div class="note__footer">
-        <button id="${index}" onclick="deleteNote(${index})" class="note__btn">Delete Note</button>
-        <button id="${index}" onclick="editNote(${index})" class="note__btn edit-btn">Edit Note</button>
-        </div>
+          <button id="${index}" onclick="deleteNote(${index})" class="note__btn">Delete Note</button>
+          <button id="${index}" onclick="editNote(${index})" class="note__btn edit-btn">Edit Note</button>
         </div>
       </div>
     `;
   });
 
   if (notesObj.length === 0) {
-    html = "No Notes Yet! Add a note using the form on the right.";
+    html = "No Notes Yet! Add a note using the form";
   }
 
   notesElm.innerHTML = html;
@@ -168,12 +168,12 @@ deleteBtn.addEventListener("click", (event) => {
   event.preventDefault();
   fileInput.value = "";
   deleteBtn.classList.add("hidden");
-  // fileIndicator.classList.add('hidden');
 });
 
 //OPEN FULL NOTE
 
 const noteText = document.querySelectorAll(".note__text");
+const noteImg = document.querySelectorAll(".note__img");
 const body = document.querySelector("body");
 
 noteText.forEach((text) => {
@@ -181,8 +181,19 @@ noteText.forEach((text) => {
     const note = text.parentNode.parentNode;
     const noteCounter = note.querySelector(".note__counter");
 
-    note.classList.toggle("open-full");
-    body.classList.toggle("blurred-bg");
+    body.classList.add("blurred-bg");
+    note.classList.add("open-full");
+    noteCounter.classList.add("hidden-dn");
+  });
+});
+
+noteImg.forEach((img) => {
+  img.addEventListener("click", () => {
+    const note = img.parentNode.parentNode;
+    const noteCounter = note.querySelector(".note__counter");
+
+    body.classList.add("blurred-bg");
+    note.classList.add("open-full");
     noteCounter.classList.add("hidden-dn");
   });
 });
